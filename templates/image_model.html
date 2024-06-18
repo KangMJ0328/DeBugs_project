@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+<html lang="ko">
+<head>
+{% block head %}
+
+    <meta charset="UTF-8">
+
+	<title>이미지분석 테마음악 추천 </title>
+
+	<!-- style -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/image_model_style.css') }}">
+
+	<!-- script -->
+	<script type="text/javascript" src ="{{ url_for('static',filename='script/navbar.js') }}" defer></script>
+	<script type="text/javascript" src ="{{ url_for('static',filename='script/imgpreview.js') }}" defer></script>
+
+
+    <!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+
+	<!-- fontawesome import -->
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	
+
+{% endblock %}
+
+</head>
+
+<body>
+{% block main %}
+
+<section class = "search">
+    	<div class = "inner">
+    		<div class = "search-content">
+    			<div class = "search-text">
+					<h1> "파일선택 후 분석결과를 확인하세요"</h1>
+				</div>
+
+				<div class="search_box">
+					<form action ="/image_post" method="post" enctype="multipart/form-data">
+						<div class="upload-preview">
+							<img src = "static/images/예시사진.png" id="img_section">
+						</div>
+						<input type="file"  id="inputfile" name = "image" >
+						<!--<input type="file"  id="inputfile"   accept="image/*" name="file">-->
+						<button type="submit"  id="imagesubmit" > 분석 결과 보기 </button>
+					</form>
+				</div>
+		     </div>
+    	</div>
+    </section>
+
+	<section class = "search_result">
+		<div class = "inner">
+			<div class = "result-content">
+			 {% block result %}
+			 {% endblock %}
+			</div>
+		</div>
+    </section>
+
+
+
+	<section class = "top">
+    	<div class = "inner">
+    		<div class = "top-content">
+	    		 <h1> "A.I가 추천하는 장소별 테마 추천음악  "</h1>
+		     </div>
+    	</div>
+    </section>
+    
+	<section class = "about1">
+    	<div class = "inner">
+    		<div class = "about1-content">
+    			<div class = "desc">
+					<h2>배경과 어울리는 음악이 궁금할때 </h2>
+    				<p>다양한 장소의 사진을 업로드 해보세요<br>
+    				'AI'가 업로드한 이미지를 분석하하여 테마를 선정, <br>
+    				사진의 테마별 컨셉에 맞는 노래를 추천합니다.  </p>
+  				</div>
+    			<div class = "photo">
+    				<img src = "static/images/link1/about1.jpg">
+    			</div>
+    		</div>
+    	</div>
+	</section>
+
+	<section class = "about2">
+    	<div class = "inner">
+    		<div class = "about2-content">
+				<div class = "photo"> <!--  케라스 사진 -->
+    				<img src = "https://cdn.inflearn.com/public/files/courses/324231/da1b6950-5340-4858-9a3e-bcb0b511f5ac/keras-logo-2018-large-1200.png">
+    			</div>
+    			<div class = "desc">
+    				<h2>Keras를 사용한 모델링</h2>
+					<!-- <p>'부가 설명'<br>
+    				</p> -->
+  				</div>
+    		</div>
+    	</div>
+	</section>
+
+	<section class = "about1">
+    	<div class = "inner">
+    		<div class = "about1-content">
+    			<div class = "desc">
+					<h2>이미지 노래 추천 방식의 알고리즘 </h2>
+    				<p>1. 다양한 풍경, 배경 등의 사진을 ai에게 딥러닝 학습<br>
+    				   2. 다양한 사진 종류의 테마마다 컨셉에 맞는 노래 설정 후 random 곡 추출  <br>
+    				 </p>
+  				</div>
+    		</div>
+    	</div>
+	</section>
+    
+ {% endblock %}
+
+
+    
+   
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "top100list.html" %}
+
+
+<body>
+
+{% block result %}
+
+<h1>"{{year_text}}년도" 종합 차트</h1>
+
+<!-- df  table로 만들기 참고 https://www.python2.net/questions-99227.htm -->
+
+    <div class = "table">
+        <table border=1 style='border-collapse:collapse'>
+           <!-- <tr>
+                <td colspan ="3"> "{{year_text}}년도 종합 차트 </td>
+            </tr>-->
+            <tr>
+                {% for col in column_names %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+                {% for row in row_data %}
+            <tr>
+                {% for col, row_ in zip(column_names, row) %}
+                <td>{{row_}}</td>
+                {% endfor %}
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}
+
+
+
+</body>
+</html>

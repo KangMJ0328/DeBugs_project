@@ -1,0 +1,698 @@
+
+body {margin: 0;
+	 font-family: 'Nanum Barun Gothic', sans-serif;
+}
+
+/* header {
+	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+	url("http://res.heraldm.com/content/image/2021/06/10/20210610000469_0.jpg") repeat-x center top;
+	"https://png.pngtree.com/thumb_back/fh260/back_our/20190622/ourmid/pngtree-hip-hop-music-background-illustration-education-training-music-carnival-image_208997.jpg") repeat-x center top;
+{background: url("https://cdn.aitimes.com/news/photo/202011/133818_131448_3756.jpg") repeat-x center top;}
+}  */
+
+header { height: 600px;
+		 /* background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)); */
+		background:
+		/* linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), */
+		url(../images/link1/about.jpg) repeat-x center;;
+			/* url("https://thevocal.itpage.kr/user/t/thevocal/20200701113519_vgZeEwh1.jpg") repeat-x center; */
+			/* url(https://picjumbo.com/wp-content/uploads/listening-to-music-in-a-bed-2210x1474.jpg) repeat-x center;; */
+		background-size : cover;
+
+}
+
+
+
+/* 헤더 안에 텍스트 부분  */
+/* .header .header_tit {text-align: center;
+					text-transform: uppercase;
+					margin-top: 55px; font-family: 'Abel', sans-serif;} */
+
+
+.header .header_tit  {
+	display: flex;
+	height: 600px;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.header .header_tit img {
+	/* margin : auto; */
+	filter: invert(1%) sepia(1%) saturate(1%) hue-rotate(1deg) brightness(1000%) contrast(80%);  /* 흰색으로 만드는 효 */
+	/* filter: brightness(0%); 검정색효과 */
+	width : 20vw;
+	margin : 0 0 20px 0;
+
+}
+
+.header .header_tit p{
+	color : #fff;
+	font-size: 1.3vw;
+}
+
+
+
+.header .header_tit h1 {
+    font-size: 55px;
+	color: #fff;
+	text-shadow: 5px 7px 2px #000;
+    /* background: #51b0dc;  */
+	display: inline-block;
+	position: relative;
+    padding: 5px 30px 5px 30px;
+    /* letter-spacing: 2px;  (자간)*/
+	font-weight: 1000; /* 폰트굵기 */
+	animation: uptext 2s ease-out;
+}
+
+/*text-shadow 참고
+ https://www.codingfactory.net/10650  */
+
+
+/* animation:
+name
+duration 재생하는데 걸리는 시간
+timing-function 재생속도 (ease ease-in 등등)
+delay  시작지연
+iteration-count
+direction 재생방향
+*/
+
+@keyframes uptext {
+	0% {
+		opacity: 0%;
+		top : 50px;
+	}
+/* 	25% {
+		opacity: 50%;
+		top : 20px;
+	}
+	75% {
+		opacity: 80%;
+		top : 10px;
+	} */
+	100% {
+		opacity: 100%;
+		top : 0px;
+
+
+	}
+}
+
+
+
+
+/************************************* nav bar ***************************************/
+
+.nav{
+	width: 100vw;
+	display: flex;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.nav .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+	/* margin-right: auto; */
+	/* cursor: pointer; */
+}
+
+.nav .logo img {
+	width: 120px;
+	height : 41px;
+}
+
+
+.nav .nav_list {
+	/* width: 90%; */
+    display: flex;
+   /*  justify-content: flex-end; */
+   /*  align-items: center; */
+	/* gap: 0.1rem; */ /* gap--> 요소사이 간격 */  /* rem 최상위 부모의 n배 */
+	margin: auto;
+	/* justify-content: center; /* 플렉스박스에서 자식요소들을 가운데 정렬 시키기 위함 */
+}
+
+
+
+
+
+.nav_listitem {
+	list-style: none;
+	font-weight: bold;
+	position: relative; /* 자손들이 원래위치로부터 상대적으로 계산됨 하위목록이 부모에 붙어있기 위  */
+	padding: 1.5rem 3rem;
+	cursor: pointer;
+}
+
+
+
+
+/*************** 밑줄효과 ****************/
+.nav_listitem::after {
+	 content: "";
+     width: 0px;
+     height: 0.15rem;
+     border-radius:0.2rem;
+     position: absolute;
+     left: 1rem;
+     bottom: 0.8rem;
+     background-color: #636363;
+     transition: 0.3s ease-in;
+ }
+
+.nav_listitem:hover::after{
+	width : 70%;  /* 처음엔 0으로 안보였다가 hover효과에서 70%너비로 선나옴 */
+
+}
+/*************** 밑줄효과 끝 ****************/
+
+
+
+
+
+
+.nav_listitem:hover ul {
+	/* .nav_listitem:hover ul ,:focus ul{ */
+	opacity: 1; /* 0~1 숫자가 작을수록 투명  */
+	visibility: visible;
+
+}
+
+
+/* 2차메뉴 */
+.nav_listitemdrop {
+	position: absolute;
+	top: 4.3rem;
+	left : -0.2rem;
+	box-shadow: 0 0 10px;
+	background-color: #fff;
+	/* border-radius: */
+	width: 8rem;
+	display: flex;
+	flex-direction: column;
+	/* gap: 0.7rem; */
+	/* padding: 1rem; */
+	opacity: 0;
+	visibility: hidden;
+	transition : opacity 100ms ease-in;
+	padding-left: 0;
+	text-align: center;
+	font-size: small;
+
+}
+
+.nav_listitemdrop li {
+	display:inline-block;
+	list-style: none;
+	width: 100%;
+	height:2em;
+	padding-top: 10px;
+	transition: 0.1s ease-in;
+	/* padding: 0.5rem 1rem; */
+}
+
+.nav_listitemdrop li:hover {
+	background-color: #d2d2d2;
+}
+/* 2차메뉴 끝 */
+
+
+
+.nav_hamberger {
+	display: none;
+	position: absolute;
+	left: 90%;
+	list-style: none;
+	cursor: pointer;
+	margin: 0 20px;
+	padding: 1.5rem 0;
+	font-size: 25px;
+}
+
+
+
+
+/* --------------------------------- search ------------------------------------------ */
+.search {
+  /* overflow: hidden; */
+  background-color: #808080;
+  height: 70px;
+}
+
+
+
+.search-container input[type=text] {
+  float: left;
+  padding: 10px 30px;
+  margin-left : 500px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.search-container button {
+  float: left;
+  padding: 10px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  margin-left : 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background: #ccc;
+
+}
+
+/* flex 정리 */
+/*  부모가 display : flex 이면 자식들은 flex 아이템 속성을 갖는다
+	flex  : flex-grow(증가너비) , flex-shrink(감소너비), flex-basis(공간배분 전 기본 너비)
+*/
+
+
+
+/* --------------------------------- main ------------------------------------------ */
+
+
+/* 섹션별 공통 */
+.inner {
+	width: 1300px; /* 너무 꽉차게 표현하면 보기 불편해서 1300안에서 컨텐츠 넣으려함  */
+	margin: auto;
+}
+
+/* top section  */
+.top {
+	display: flex;
+	padding: 50px 0;
+}
+.top-content{
+	text-align: center;
+}
+
+.top-content h1 {
+	font-size: 55px;
+}
+
+
+/* about0 section  */
+.about0 {
+	display: flex;
+	margin : 10% 0;
+	background-color: #cbddd1;
+
+}
+
+.about0-content {
+	 /* border: 3px solid #80ff80;  영역 확인하고 싶으면 테두리 넣어서 확인해 보기 */
+	display: flex;
+
+}
+
+.about0-content div {
+	padding: 30px;
+}
+
+
+.about0-content .photo img {
+	width: 80%; /* width : 50px; 이런식으로 아예지정하면 모바일버전에서 가로스크롤 발생 */
+
+}
+
+
+
+
+
+/* about1 section  */
+.about1 {
+	display: flex;
+	padding: 100px 0;
+}
+
+.about1-content {
+	 /* border: 3px solid #80ff80;  영역 확인하고 싶으면 테두리 넣어서 확인해 보기 */
+	display: flex;
+}
+
+.about1-content div {
+	padding: 30px;
+}
+.desc{
+	 /* border : 3px solid #000;  */
+	text-align: center;
+	flex: 3; /* flex 부모영역의 5/2 크기라는 뜻 */
+}
+.desc h2{
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+.desc h3{
+	color: gray;
+}
+
+.desc p{
+	font-size : 16px;
+	line-height: 1.7em; /* em 부모요소의 상대크기 */
+}
+.photo {
+	/* border : 3px solid red;  */
+	flex : 2; /* flex 부모영역의 5/3 크기라는 뜻 */
+
+}
+.about1-content .photo img {
+	width: 100%; /* width : 50px; 이런식으로 아예지정하면 모바일버전에서 가로스크롤 발생 */
+	border-radius: 5%;
+	box-shadow: 5px 5px 5px #636363;
+	/* border-radius: 30% 60% 65% 35%  / 40% 45% 55% 60%;   테두리효과가 중첩되어 기하학적 형태 나타낼 수 있음*/
+}
+
+
+/* about2 section  */
+.about2 {
+	display: flex;
+	padding: 50px 0;
+}
+
+.about2-content {
+	display: flex;
+}
+
+.about2-content div {
+	padding: 30px;
+}
+.desc{
+	text-align: center;
+	flex: 3; /* flex 부모영역의 5/2 크기라는 뜻 */
+}
+.desc h2{
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+.desc h3{
+	color: gray;
+}
+
+.desc p{
+	font-size : 16px;
+	line-height: 1.7em; /* em 부모요소의 상대크기 */
+}
+.photo {
+	/* border : 3px solid red;  */
+	flex : 2; /* flex 부모영역의 5/3 크기라는 뜻 */
+
+}
+.about2-content .photo img {
+	width: 100%; /* width : 50px; 이런식으로 아예지정하면 모바일버전에서 가로스크롤 발생 */
+	border-radius: 5%;
+	box-shadow: 5px 5px 5px #636363;
+	/* border-radius: 30% 60% 65% 35%  / 40% 45% 55% 60%;   테두리효과가 중첩되어 기하학적 형태 나타낼 수 있음*/
+}
+
+
+
+
+
+/* people section  */
+
+.people {
+	display: flex;
+	padding : 100px 0;
+	border: 2px;
+}
+
+.people-title{
+	/* border: 2px solid #00ffff; */
+	margin: 10%;
+}
+
+.people-title h3 {
+	text-align: center;
+	color:gray;
+	font-size: 2em;
+
+}
+
+.people-title h4 {
+	text-align: center;
+	color:gray;
+	font-size: 1em;
+}
+
+
+.people-content{
+/* 	border: 3px solid #80ff80; */
+	display: flex;
+}
+
+
+.people-content .card {
+	/* border: 3px solid #ff80c0; */
+	/* margin: 2em; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 1 33.3%;
+	/* flex-grow(늘어날때 유동적)  flex-shirink(줄어들때 유동적)  flex-basis(크기) */
+}
+
+
+/* .people-content .photo{
+	/* border : 2px solid #0000a0;  */
+	/* overflow: hidden; */
+
+
+
+/* .people-content .card .photo_text {
+	position: absolute;
+	top : 5em;
+	z-index: 3;
+	color: #000;
+	font-size: 25px;
+} */
+
+.people-content img{
+	width: 100%;
+	border-radius: 10px;
+	/* z-index: 1; */
+}
+
+
+.people-content img:hover{
+	filter: grayscale(100%);
+	opacity:50%;
+}
+
+.people-content .desc {
+	text-align : center;
+/* 	border : 1px solid #ff0000; */
+}
+
+
+
+
+
+
+
+
+
+
+/*********************************************** footer ************************************************/
+
+footer {
+	/* display: flex; */
+	/* height: 100%; */
+	margin-top: 10em;
+	background-color: #1b1b1b;
+}
+
+
+.footer_container {
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    /* border-top: 5px solid #b0b0b0;  */
+	/* margin-top: auto; */
+}
+
+
+.footertop {
+	display: flex;
+	height: 10em;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.footertop .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+}
+
+
+.footertop .logo img {
+	width: 120px;
+	height : 41px;
+}
+
+
+
+.footertop .footerlist {
+	display: flex;
+	list-style: none;/*  li태그의  기본값 . 모양 */
+	font-size: 12px;
+}
+
+.footerlist li {
+	padding: 8px 10px;
+}
+
+.footerlist li a{
+	text-decoration: none; /* a태그의 기본 밑줄 */
+	margin : 0 20px;
+	color: #fff;
+}
+
+
+
+.footerlist li a:hover{
+	text-decoration: underline;
+}
+
+
+
+/* 가상요소 선택자(after)를 이용해서 구분선 넣기  */
+.footerlist li::after {
+	content : "|";
+	color: #fff;
+}
+.footerlist li:last-child::after {
+	content: "";
+}
+
+
+
+
+.copyright {
+	border-top: 1px solid  #fff;
+	/* text-align: right; */
+	margin: 2% 0;
+}
+
+
+.copyright h6 {
+	color: #fff;
+	font-size: 13px;
+}
+
+
+
+/* media query*/
+/* @media (max-width: 1220px){
+    .container {width: 100%;}
+    .row {padding: 0 15px;}
+}  */
+
+/**************************** 반응형 부분 *****************************************************/
+
+ @media all and (min-width:1024px) {
+ }
+
+/* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/
+ @media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+/* 테블릿 세로 (해상도 768px ~ 1023px)  */
+@media all and (min-width:768px) and (max-width:1023px) {
+
+ }
+
+/* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)  */
+@media all and (min-width:480px) and (max-width:767px) {
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* 스크립트 적용 부분  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* 스크립트 적용 부분  */
+	display: flex;
+}
+
+}
+
+
+
+@media all and (max-width:479px) {
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* 스크립트 적용 부분  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* 스크립트 적용 부분  */
+	display: flex;
+}
+
+
+
+}
+ 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends "lyrics_sim.html" %}
+
+
+<body>
+
+{% block result %}
+
+
+
+<h1> 고객님의 "{{song_name}}"  키워드에 대한 추천 결과입니다. </h1>
+
+<!-- 방법1)df를 to_html()로 바로 랜더링 -->
+ <!--   {% for table in tables %}  &lt;!&ndash; app 에 있는 tables 를 for 문으로 반복시켜 결과값을 받아냄&ndash;&gt;
+        {{ table|safe }}  &lt;!&ndash;|safe는 템플릿에서 자동변환기능(자동으로 특수문자들을 변환시켜주는)을 일시적으로 비활성화하여 문자열을 안전한 HTML이 되도록 하는것&ndash;&gt;
+    {% endfor %}-->
+
+
+<!-- 방법2)df를 그대로 받아서 table 태그로 랜더링-->
+<style>
+    table {
+	border : 3px solid;
+	border-collapse:collapse;
+    font-size : 14px;
+    }
+
+    th, td {
+    border : 1px solid;
+	padding : 15px 13px;
+	}
+
+	th {
+		background-color: #333333;
+		color:#fff;
+	}
+</style>
+
+    <table>
+            <tr>
+                {% for col in column_names %}
+                <th>{{col}}</th>
+                {% endfor %}
+            </tr>
+                {% for row in row_data %}
+            <tr>
+                {% for col, row_ in zip(column_names, row) %}
+                <td>{{row_}}</td>
+                {% endfor %}
+            </tr>
+                {% endfor %}
+        </table>
+
+
+
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

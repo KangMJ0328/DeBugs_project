@@ -1,0 +1,666 @@
+
+body {
+	margin: 0;
+	overflow-x: hidden;} /* 이상한 가로스크롤이 생겨서 hidden으로 숨김 */
+
+/************************************* nav bar ***************************************/
+
+
+.nav{
+	width: 100vw;
+	display: flex;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.nav .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+	/* margin-right: auto; */
+	/* cursor: pointer; */
+}
+
+.nav .logo img {
+	width: 120px;
+	height : 41px;
+}
+
+
+.nav .nav_list {
+	/* width: 90%; */
+    display: flex;
+   /*  justify-content: flex-end; */
+   /*  align-items: center; */
+	/* gap: 0.1rem; */ /* gap--> 요소사이 간격 */  /* rem 최상위 부모의 n배 */
+	margin: auto;
+	/* justify-content: center; /* 플렉스박스에서 자식요소들을 가운데 정렬 시키기 위함 */
+}
+
+
+
+
+
+.nav_listitem {
+	list-style: none;
+	font-weight: bold;
+	position: relative; /* 자손들이 원래위치로부터 상대적으로 계산됨 하위목록이 부모에 붙어있기 위  */
+	padding: 1.5rem 3rem;
+	cursor: pointer;
+}
+
+
+
+/*************** 밑줄효과 ****************/
+.nav_listitem::after {
+	 content: "";
+     width: 0px;
+     height: 0.15rem;
+     border-radius:0.2rem;
+     position: absolute;
+     left: 1rem;
+     bottom: 0.8rem;
+     background-color: #636363;
+     transition: 0.3s ease-in;
+ }
+
+.nav_listitem:hover::after{
+	width : 70%;  /* 처음엔 0으로 안보였다가 hover효과에서 70%너비로 선나옴 */
+
+}
+/*************** 밑줄효과 끝 ****************/
+
+
+
+
+
+
+.nav_listitem:hover ul {
+	/* .nav_listitem:hover ul ,:focus ul{ */
+	opacity: 1; /* 0~1 숫자가 작을수록 투명  */
+	visibility: visible;
+
+}
+
+
+/* 2차메뉴 */
+.nav_listitemdrop {
+	position: absolute;
+	top: 4.3rem;
+	left : -0.2rem;
+	box-shadow: 0 0 10px;
+	background-color: #fff;
+	/* border-radius: */
+	width: 8rem;
+	display: flex;
+	flex-direction: column;
+	/* gap: 0.7rem; */
+	/* padding: 1rem; */
+	opacity: 0;
+	visibility: hidden;
+	transition : opacity 100ms ease-in;
+	padding-left: 0;
+	text-align: center;
+	font-size: small;
+
+}
+
+.nav_listitemdrop li {
+	display:inline-block;
+	list-style: none;
+	width: 100%;
+	height:2em;
+	padding-top: 10px;
+	transition: 0.1s ease-in;
+	/* padding: 0.5rem 1rem; */
+}
+
+.nav_listitemdrop li:hover {
+	background-color: #d2d2d2;
+}
+/* 2차메뉴 끝 */
+
+
+
+.nav_hamberger {
+	display: none;
+	position: absolute;
+	left: 90%;
+	list-style: none;
+	cursor: pointer;
+	margin: 0 20px;
+	padding: 1.5rem 0;
+	font-size: 25px;
+}
+
+
+
+
+
+
+header { height: 400px;
+		 background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+			url("https://thevocal.itpage.kr/user/t/thevocal/20200701113519_vgZeEwh1.jpg") repeat-x center;
+}
+/* "http://res.heraldm.com/content/image/2021/06/10/20210610000469_0.jpg" */
+
+
+
+/* 헤더 안에 텍스트 부분  */
+/* .header .header_tit {text-align: center;
+					text-transform: uppercase;
+					margin-top: 55px; font-family: 'Abel', sans-serif;} */
+
+
+.header .header_tit h1 {
+    font-size: 55px;
+	color: #fff;
+	text-shadow: 5px 7px 2px #000;
+    /* background: #51b0dc;  */
+	display: inline-block;
+	position: relative;
+    padding: 5px 30px 5px 30px;
+    /* letter-spacing: 2px;  (자간)*/
+	font-weight: 1000; /* 폰트굵기 */
+	animation: uptext 2s ease-out;
+}
+
+/*text-shadow 참고
+ https://www.codingfactory.net/10650  */
+
+
+/* animation:
+name
+duration 재생하는데 걸리는 시간
+timing-function 재생속도 (ease ease-in 등등)
+delay  시작지연
+iteration-count
+direction 재생방향
+*/
+
+@keyframes uptext {
+	0% {
+		opacity: 0%;
+		top : 50px;
+	}
+/* 	25% {
+		opacity: 50%;
+		top : 20px;
+	}
+	75% {
+		opacity: 80%;
+		top : 10px;
+	} */
+	100% {
+		opacity: 100%;
+		top : 0px;
+
+
+	}
+}
+
+
+
+/* --------------------------------- flex 정리 ------------------------------------------ */
+
+/* flex 정리 */
+/*  부모가 display : flex 이면 자식들은 flex 아이템 속성을 갖는다
+	flex  : flex-grow(증가너비) , flex-shrink(감소너비), flex-basis(공간배분 전 기본 너비)
+*/
+
+
+
+/* --------------------------------- main ------------------------------------------ */
+
+/* 스크롤 내릴때 효과 참고
+https://dkanxmstmdgml.tistory.com/111 */
+
+
+
+/* 섹션별 공통 */
+.inner {
+	width: 1300px; /* 너무 꽉차게 표현하면 보기 불편해서 1300안에서 컨텐츠 넣으려함  */
+	margin: auto;
+}
+
+
+
+/* top section  */
+.top {
+	display: flex;
+	padding: 50px 0;
+}
+.top-content{
+	text-align: center;
+
+}
+
+.top-content h1 {
+	font-size: 55px;
+	color : 1c1c1c;
+	position: relative; /* 애니메이션 효과 주기위해 */
+	animation: uptext 2s ease-out;
+}
+
+
+
+
+
+/*  search section */
+.search {
+	/* border : 1px solid #ff80c0; */
+	display: flex;
+	padding: 80px 0;
+	background-color: #d8d8d8;
+}
+
+.search-content{
+	/* border : 1px solid orange; */
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+}
+
+.search-text {
+	margin-bottom: 15px;
+}
+
+
+.search_box {
+	/* border : 1px solid #ff0000; */
+	display: flex;
+	width: 100%;
+	height: auto;
+	/* margin-bottom: 15px; */
+}
+
+form {
+	margin: 0 10%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* 자식요소들 정렬 방법  */
+
+}
+
+.upload-preview {
+	width: 70%;
+	height: 400px;
+	/* border : 2px dashed #000;  */
+	border: 5px solid #000;
+	margin : 0 60px 20px 60px;
+
+}
+
+
+.upload-preview img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+
+
+}
+
+/*
+.inputfilebutton {
+	display: inline-block;
+	width: 150px;
+	/* padding: 6px 25px;
+	line-height: 45px;
+	background-color: #4a4a4a;
+	border-radius: 35px;
+	color : #fff;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px 2px #000;
+}
+*/
+
+/* input {
+	display: none;
+} */
+
+input{
+margin : 0 0 20px 0;
+width: 180px;
+}
+
+
+input[type="file" i] {
+	padding: 0;
+}
+
+
+
+button {
+	font-size: 15px;
+	width: 200px;
+	height: 60px;
+	border-radius: 15px;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+	/* box-shadow: 3px 3px 3px 2px #000; */
+/* 	margin: 1rem auto; */
+}
+
+
+button:hover {
+	background-color: #111;
+
+}
+
+
+
+/* result section */
+.search_result {
+	display: flex;
+	margin : 5% 0;
+}
+.result-content {
+    display : flex;
+    flex-direction:column;
+	text-align: center;
+	align-items: center;
+}
+
+.result-content h1{
+	text-align: center;
+	color:#424242;
+}
+
+
+
+
+
+/* about1 section  */
+.about1 {
+	display: flex;
+	padding: 100px 0;
+}
+
+.about1-content {
+	 /* border: 3px solid #80ff80;  영역 확인하고 싶으면 테두리 넣어서 확인해 보기 */
+	display: flex;
+}
+
+/* .about1-content div {
+	padding: 30px;
+} */
+.about1-content .desc{
+	 /* border : 3px solid #000;  */
+	text-align: center;
+	 flex: 5; /* flex 부모영역의 5/2 크기라는 뜻 */
+}
+.desc h2{
+	font-size: 35px;
+	color : #262525;
+
+}
+.desc p{
+	color: #333232;
+	font-size : 20px;
+	font-weight: 600;
+	line-height: 1.6em; /* line-height줄 높이, ;em 부모요소의 상대크기 */
+
+}
+.photo {
+	/* border : 3px solid red;  */
+	flex : 2; /* flex 부모영역의 5/3 크기라는 뜻 */
+	display : flex;
+
+}
+.about1-content .photo img {
+	width: 100%; /* width : 50px; 이런식으로 아예지정하면 모바일버전에서 가로스크롤 발생 */
+	border-radius: 5%;
+	box-shadow: 5px 5px 5px #636363;
+	/* border-radius: 30% 60% 65% 35%  / 40% 45% 55% 60%;   테두리효과가 중첩되어 기하학적 형태 나타낼 수 있음*/
+}
+
+
+/* about2 section  */
+.about2 {
+	display: flex;
+	padding: 50px 0;
+}
+
+.about2-content {
+	display: flex;
+}
+
+.about2-content div {
+	padding: 30px;
+}
+.desc{
+	text-align: center;
+	flex: 3; /* flex 부모영역의 5/2 크기라는 뜻 */
+}
+.desc h2{
+	font-size: 40px;
+	font-weight: bolder;
+}
+
+.desc p{
+	font-size : 16px;
+	line-height: 1.7em; /* em 부모요소의 상대크기 */
+}
+.photo {
+	/* border : 3px solid red;  */
+	flex : 3; /* flex 부모영역의 5/3 크기라는 뜻 */
+	display : flex;
+
+}
+.about2-content .photo img {
+	width: 100%; /* width : 50px; 이런식으로 아예지정하면 모바일버전에서 가로스크롤 발생 */
+	/* border-radius: 5%; */
+	/* object-fit: ; */
+
+	/* box-shadow: 5px 5px 5px #636363; */
+	/* border-radius: 30% 60% 65% 35%  / 40% 45% 55% 60%;   테두리효과가 중첩되어 기하학적 형태 나타낼 수 있음*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************** footer ************************************************/
+
+footer {
+	/* display: flex; */
+	/* height: 100%; */
+	margin-top: 10em;
+	background-color: #1b1b1b;
+}
+
+
+.footer_container {
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    /* border-top: 5px solid #b0b0b0;  */
+	/* margin-top: auto; */
+}
+
+
+.footertop {
+	display: flex;
+	height: 10em;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.footertop .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+}
+
+
+.footertop .logo img {
+	width: 120px;
+	height : 41px;
+}
+
+
+
+.footertop .footerlist {
+	display: flex;
+	list-style: none;/*  li태그의  기본값 . 모양 */
+	font-size: 12px;
+}
+
+.footerlist li {
+	padding: 8px 10px;
+}
+
+.footerlist li a{
+	text-decoration: none; /* a태그의 기본 밑줄 */
+	margin : 0 20px;
+	color: #fff;
+}
+
+
+
+.footerlist li a:hover{
+	text-decoration: underline;
+}
+
+
+
+/* 가상요소 선택자(after)를 이용해서 구분선 넣기  */
+.footerlist li::after {
+	content : "|";
+	color: #fff;
+}
+.footerlist li:last-child::after {
+	content: "";
+}
+
+
+
+
+.copyright {
+	border-top: 1px solid  #fff;
+	/* text-align: right; */
+	margin: 2% 0;
+}
+
+
+.copyright h6 {
+	color: #fff;
+	font-size: 13px;
+}
+
+
+
+/* media query*/
+/* @media (max-width: 1220px){
+    .container {width: 100%;}
+    .row {padding: 0 15px;}
+}  */
+
+/**************************** 반응형 부분 *****************************************************/
+
+ @media all and (min-width:1024px) {
+ }
+
+/* PC , 테블릿 가로 (해상도 768px ~ 1023px)*/
+ @media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+/* 테블릿 세로 (해상도 768px ~ 1023px)  */
+@media all and (min-width:768px) and (max-width:1023px) {
+
+ }
+
+/* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)  */
+@media all and (min-width:480px) and (max-width:767px) {
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* 스크립트 적용 부분  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* 스크립트 적용 부분  */
+	display: flex;
+}
+
+}
+
+
+
+@media all and (max-width:479px) {
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* 스크립트 적용 부분  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* 스크립트 적용 부분  */
+	display: flex;
+}
+
+
+
+
+
+

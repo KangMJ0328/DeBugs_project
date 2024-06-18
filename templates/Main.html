@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>music emotion project</title>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- 외부스타일 설정 -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/mainstyle.css') }}">
+
+	<!-- 폰트   적용방법  font-family: 'Poppins', sans-serif;-->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+
+
+<style>
+.bg_gradient {  
+	background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url("static/images/img5.jpg");
+	background-repeat: no-repeat;
+	background-size: cover; 
+	background-position: center;
+}
+	
+</style>
+
+</head>
+
+
+
+<body>
+
+<div class ="bg_gradient">
+<!---------------------------메뉴----------------------------------------------------->
+	<input type = "checkbox" id="menuicon">  <!-- 클릭해서 변화되는 값을 활용하는 것이므로 input사용 -->
+			<label for = "menuicon"> <!-- 클릭하면 X로 바뀌는 움직이는 햄버거메뉴버튼 -->
+				<span></span>  <!--메뉴 삼단계 모양-->
+				<span></span>
+				<span></span>
+			</label>
+			<div class="sidebar">
+					<ul>
+						 <li><a href ="#"> Home </a></li>
+						 <li><a href ="{{ url_for('about')}}"> About </a></li>
+						 <li><a href ="{{ url_for('image1')}}"> Model </a></li>
+						 <li><a href ="#"> Idea </a></li>
+					 </ul>
+			</div>
+			<!--Flask에서 링크걸때는 ->>>>> url_for(app에서 템플릿 렌더링 할때 정의한 함수이름) , 주석안에 대괄호도 쓰지말것 url_for때문에 오류남 -->
+	
+<!---------------------------사진 슬라이드쇼 영역----------------------------------------------------->
+	<div class="slideshow-container">
+	
+		<section id="slider">
+		  <input type="radio" name="slider" id="s1">
+		  <input type="radio" name="slider" id="s2">
+		  <input type="radio" name="slider" id="s3" checked>
+		  <input type="radio" name="slider" id="s4">
+		  <input type="radio" name="slider" id="s5">
+		  <label for="s1" id="slide1">
+		  	<img src="static/images/img1.jpg" height="100%" width="100%">
+		  </label>
+		  <label for="s2" id="slide2">
+		  	  	<img src="static/images/img2.png" height="100%" width="100%">
+		  </label>
+		  <label for="s3" id="slide3">
+		  	  	<img src="static/images/img3.jpg" height="100%" width="100%">
+		  </label>
+		  <label for="s4" id="slide4">
+		  	  	<img src="static/images/img4.jpg" height="100%" width="100%">
+		  </label>
+		  <label for="s5" id="slide5">
+		  	  	<img src="static/images/img5.jpg" height="100%" width="100%">
+ 		 </label>
+		</section>	
+		
+	</div>
+			 
+<!---------------------------main text 영역----------------------------------------------------->
+		<div class = "maintext">
+			<div class = "screen">
+				<div class = "top_maintext">1st Project</div>
+				<div class = "bottom_maintext"> WE WILL FIND SONG<br>WHAT YOU WANT </div>
+				<div class = "button"><button type = "button" onclick = "location.href = '{{ url_for('about')}}'" >Brand Story</button></div>
+			</div>	
+		</div> 
+	
+
+<!---------------------------<footer 영역>----------------------------------------------------->
+	<div class ="footer">
+		<div class = "copyright">
+				<h6 style = "font-size:5px" >&copy; 2021.All Rights Reserved.</h6>
+		</div> 
+	</div>
+
+
+</div>
+
+
+
+
+
+	
+</body>
+</html>
+
+
+
+
+
+

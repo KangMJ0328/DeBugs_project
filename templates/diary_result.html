@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "diary.html" %}
+
+
+<body>
+
+{% block result %}
+
+<!--app에 있는 print_text1를 for문으로 반복시켜 결과값을 받아냄 대괄호는 jinja2형식-->
+
+    {% for a in print_emotion %}
+        <li>{{ a }}</li>
+    {% endfor %}
+
+    {% for i in print_text1 %}
+        <li>{{ i }}</li>
+    {% endfor %}
+
+ <!--   {% for a in print_text2 %}
+        <li>{{ a }}</li>
+    {% endfor %}-->
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

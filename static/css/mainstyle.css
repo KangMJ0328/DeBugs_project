@@ -1,0 +1,336 @@
+
+
+
+@charset "utf-8";
+
+/* *{box-sizing:border-box;} */
+
+/* html body 태그에 속한 요소에만 영향을 줌 */
+
+/**********************************  배경  *****************************************/
+
+body {margin : 0; height: 100%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;}
+
+
+.bg_gradient {  
+	height : 100vh;
+	width : 100vm;
+	/* background : linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%); */
+	/*  background: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%); } */
+	/* background: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);} /* 디자인1 * */
+	 /* background: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);} */
+	 }
+
+
+
+/********************************** 사이드 메뉴 햄버거아이콘*****************************************/
+
+input[type="checkbox"] {
+	display:none;}  
+
+
+/*  input[id ="menuicon"] {
+	display:none;} */  
+
+
+/* + 는 인접요소 선택자(근처에 붙어있는 요소를 불러올 수 있음)*/
+input[id ="menuicon"] + label {
+	display : block;
+	/*margin: 20px;  마진넣으면 흰색 배경들어가서 padding값만 넣음 */ 
+	width : 30px;
+	height: 50px;
+	position:relative;
+	cursor: pointer;
+}
+input[id ="menuicon"] +label span {
+	margin: 10px;
+	display : block;
+	position: absolute; 
+	width:100%;
+	height:5px;
+	/* border-radius:30px; */ /* 둥근테두리  */
+	background: #fff;
+	transition:all .35s;
+}
+/* span태그 위치 상중하로 위치시키기 */
+input[id ="menuicon"] + label span:nth-child(1) {top:0;}
+input[id ="menuicon"] + label span:nth-child(2) {top:25%;}
+input[id ="menuicon"] + label span:nth-child(3) {bottom:0;}
+
+/* id = menuicon 에 :cheked 옵션을 넣었을때, X로 바뀌는 효과 넣기*/
+input[id ="menuicon"]:checked +label  {z-index: 2;}  /* 우선순위 정해주는 인덱스, 수치가 클수록 순서가 앞*/
+input[id ="menuicon"]:checked + label span {background : #fff;}
+input[id ="menuicon"]:checked + label span:nth-child(1) {top:25%; transform:rotate(45deg);}
+input[id ="menuicon"]:checked + label span:nth-child(2) {opacity:0%}
+input[id ="menuicon"]:checked + label span:nth-child(3) {bottom:25%;transform :rotate(-45deg);}  
+ 
+ 
+/********************************** 사이드 bar 배경*****************************************/
+/*.sidebar{스타일} 이렇게 해도됨 */ 
+div[class="sidebar"] {width:180px; height:100%;  background:#000000 ;  
+					  position:fixed; 
+					  top:0; left:-210px; 	
+					  /* left: -200px; 처음에 안보이게 하려고 */	
+					  box-shadow: 0 0 6px rgba(255,255,255,0.5);
+					  z-index:1; transition:all .7s;} 
+					  	
+					  																	
+input[id="menuicon"]:checked+label+div {left:0;}/*-300값이 었던 위치가 0의값으로 오면 보이게 되기 위함 */
+ 
+ 
+
+/********************************** 사이드 bar 메뉴 *****************************************/
+
+
+.sidebar header{
+	font-size:20px;
+	color : #fff; 
+	text-align: center;
+	line-height: 250px;  /*줄높이*/
+	/* background: #d9a7c7 */;
+	user-select: none; /* 요소의 텍스트를 선택할지 정의 현재 header 부분 글씨 선택 안할거므로 none / auto / text */
+}  
+
+
+.sidebar ul {
+	position:relative;
+	top: 25%;
+	margin: 0px;
+	padding: 0px;
+	text-align: center; /* 인라인 속성으로 li를 지정해놔서 텍스트로 인식되게 하여 중앙정렬함 */
+}
+
+.sidebar ul a {
+	display : block; /* 블럭요소를 채워서 글자길이가 짧아도 한줄에 써지지 않고 한줄에 한 단어씩 되게 */
+	height: 100%;
+	width: 100%;
+	line-height: 65px;
+	font-size: 30px;
+	color: #535a64;
+	/* padding-left: 20px; */
+	box-sizing : border-box;
+	text-decoration: none;  /* default값으로 넣어져 있던 밑줄 해제 */ 
+	/* border-top: 1px solid rgba(255,255,255,.1); 
+	border-bottom: 1px solid black; */
+	transition: .9s;
+	
+}
+
+.sidebar ul li {
+	list-style:none;  /* default값이 리스트 점 없애기  */
+	display: inline;
+}
+
+
+ul li:hover a{
+	padding-left: 15px; /* 옆으로 움직이는 듯한 효과 나옴 */
+	color: white;
+}
+
+
+/************************** 슬라이드 이미지* ***********************************************************************************************/
+
+[type=radio] {
+ display: none; 
+}
+
+
+#slider {
+  height: 25vw;
+  max-width : 70%;
+  position: relative;
+  perspective: 70rem;/* 1300px; */ /* 원근법 */
+  transform-style: preserve-3d;
+}
+
+#slider label {
+  margin: auto;
+  width: 45%;
+  height: 100%;
+  border-radius: 6px;
+  position: absolute;
+  left: 50%; right: 0;
+  cursor: pointer;
+  transition: transform 0.6s ease; /* defaul가 ease  */  
+}
+
+
+img {
+	border-radius: 10px; /* 테두리 */
+}
+
+
+#s1:checked ~ #slide4, #s2:checked ~ #slide5,
+#s3:checked ~ #slide1, #s4:checked ~ #slide2,
+#s5:checked ~ #slide3 {
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(-50%,0,-200px);
+  /* opacity: 0.8; */
+  filter: grayscale(90%);
+}
+
+#s1:checked ~ #slide5, #s2:checked ~ #slide1,
+#s3:checked ~ #slide2, #s4:checked ~ #slide3,
+#s5:checked ~ #slide4 {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(-25%,0,-100px);
+ /* opacity: 0.8; */
+  filter: grayscale(90%);
+}
+
+/* 중앙에 보이는 이미지 */
+#s1:checked ~ #slide1, #s2:checked ~ #slide2,
+#s3:checked ~ #slide3, #s4:checked ~ #slide4,
+#s5:checked ~ #slide5 {
+  box-shadow: 0 13px 25px 0 rgba(0,0,0,.3), 0 11px 7px 0 rgba(0,0,0,.19);
+  transform: translate3d(0,0,0);
+  /* transform: translatex(-40%) scale(.8); */
+}
+
+#s1:checked ~ #slide2, #s2:checked ~ #slide3,
+#s3:checked ~ #slide4, #s4:checked ~ #slide5,
+#s5:checked ~ #slide1 {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,.3), 0 2px 2px 0 rgba(0,0,0,.2);
+  transform: translate3d(25%,0,-100px);
+  /* opacity: 0.8; */
+  filter: grayscale(90%);
+}
+
+#s1:checked ~ #slide3, #s2:checked ~ #slide4,
+#s3:checked ~ #slide5, #s4:checked ~ #slide1,
+#s5:checked ~ #slide2 {
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.37);
+  transform: translate3d(50%,0,-200px);
+  /* opacity: 0.8; */
+  filter: grayscale(90%);
+}
+  /**************************************************************************************************************************/
+ 
+ 
+/* .text {
+font-size: 70px;
+text-align:center;
+position : absolute;
+top : 50%;
+left : 50%;
+transform: translate(-50%, -50%); 변형효과 rotate, scale , translate, skew 
+color : white;
+} */
+
+
+.maintext {
+	margin: 0;
+	/* text-align:center; 텍스트 정렬 */
+	position : relative;
+	top: 7%; 
+	height:auto;
+	/* right: 1%; */
+	/* color : white; */
+}
+
+.maintext .screen .top_maintext {
+	animation-name : top_text; 
+	position: relative;
+	animation-duration : 2.5s;
+	text-align:center;
+	color: #c0c0c0;
+	font-size: 20px;
+	font-family:'Poppins', sans-serif;
+	font-weight: lighter;
+} 
+
+.maintext .screen .bottom_maintext {
+	animation-name : bottom_text; 
+	position: relative;
+	animation-duration : 3s; /* 키프레임 에니매이션 구동시간 */
+	text-align:center;
+	color: #fff;
+	font-size: 60px; 
+	font-family:'Poppins', sans-serif;
+	line-height: 65px;
+}
+
+
+
+
+
+/* 글자애니메이션 효과는 transition으로도 줄수 있을거 같음 사이트 참고해서 시도해보기
+https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions*/
+/* @keyframes으로 아래에서 위로 올라오는 효과를 위해 받는 객체가 position:relative 상태지정 */
+
+@keyframes top_text {
+  0% {color:transparent; left:0px; top:40px;}
+  25% {color:transparent; left:0px; top:30px;}  
+  75% {color :#c0c0c0; left:0px; top :0px;}  
+  100% {color:#c0c0c0; left:0px; top:0px;}	
+}
+
+@keyframes bottom_text {
+  0% {color:transparent; left:0px; top:40px;}
+  25% {color:transparent; left:0px; top:30px;}  
+  75% {color :#fff; left:0px; top :0px;}  
+  100% {color:#fff; left:0px; top:0px;}	
+}
+
+/* animation-name : 애니메이션 효과에 이름을 설정해야 @keyframes에 설정한 명령이 실행됨.
+animation-duration : 애니메이션 실행되는 시간.
+animation-delay : 몇초 지난 후 실행될지 .
+animation-timingfunction : 애니메이션 진행 속도.
+animation-direaction : 애니메이션 진행방향.
+animation-iteration-count : 애니메이션 반복 횟수.
+animation-play-state : 애니메이션을 멈추거나 시작.
+animation-fill-mode : 애니메이션 시작 전,후 상태값. */
+
+
+
+
+
+.maintext .screen button{
+	display : block;
+	margin: auto;
+	margin-top : 30px;
+	border : none;
+	border: 2pt;
+	border-radius:20px;
+	border-color: #fff;
+	border-style:solid;
+	padding: 10px 25px;
+	background-color:transparent; /* 투명  */
+	color: #fff;
+	/* align-items : center; */    /* 왜 안되는지 모름  */
+	left : 50%;
+	cursor: pointer;
+	border-color: #fff;
+	animation-name : bt; 
+	animation-duration : 3.6s;
+}
+
+@keyframes bt {
+  0% {color:transparent; border-color:transparent;}
+  25% {color:transparent; border-color:transparent;}  
+  75% {color :#fff;}  
+  100% {color:#fff;}	
+}
+
+
+
+.maintext button:hover {
+	background-color: #e4e4e4;
+	color: black;
+	transition: .6s; 
+}
+	
+	
+	
+.copyright {
+	margin: 0;
+	text-align:center; /* 텍스트 정렬 */
+	position : absolute;
+	top : 96%;
+	right : 1%;
+	color : black;
+}	
+	
+
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+	{% block head %}
+	{% endblock %}
+
+</head>
+
+
+	<body>
+<!---------------------------<navebar>----------------------------------------------------->
+
+ <!-- dropdown navbar 만들기  https://www.youtube.com/watch?v=nhlF3wRPkug -->
+ <!-- flask에서 url_for 사용시 괄호안에는 app에서 연결할 함수명을 입력 -->
+ <nav class="nav">
+ 		<div class="logo">
+ 			<a href = "{{ url_for('intro')}}">
+ 				<img src="static/images/logo.png">
+ 			</a>
+		 </div>
+		 <ul class="nav_list">
+			<li class="nav_listitem"><a href = "{{ url_for('intro')}}">Home</a></li>
+			<li class="nav_listitem"><a href = "{{ url_for('about')}}">About</a></li>
+			<li class="nav_listitem">Model
+				<ul class="nav_listitemdrop">
+					<li><a href = "{{ url_for('lyrics')}}">가사빈도수추천</a></li>
+					<li><a href = "{{ url_for('lyrics_emotion')}}">가사정서추천</a></li>
+					<li><a href = "{{ url_for('musicpitch')}}">음악pitch유사도</a></li>
+					<li><a href = "{{ url_for('image1')}}">이미지분석</a></li>
+				</ul>
+			</li>
+			<li class="nav_listitem">Idea
+				<ul class="nav_listitemdrop">
+					<li><a href = "{{ url_for('diary')}}">일기장분석</a></li>
+					<li><a href = "{{ url_for('youtube')}}">youtube 음원추출</a></li>
+					<li><a href = "{{ url_for('top100list')}}">top100</a></li>
+			<!--		<li><a href = "#">목소리피치분석</a></li>-->
+					<li><a href = "{{ url_for('ing')}}">원곡자와유사도</a></li>
+				</ul>
+			</li>
+	 	</ul>
+		<a href = "#" class = "nav_hamberger">
+			<i class="fas fa-bars"></i>
+			<i class="fas fa-times"></i> <!--  fontawesome icon 적용 --> <!-- <i class="fas fa-times"></i>  x 아이콘 -->
+		</a>
+ </nav>
+
+
+
+<!---------------------------<header>----------------------------------------------------->
+{% block header %}
+{% endblock %}
+
+<!---------------------------< main >---------------------------------------------------->
+<main>
+
+	{% block main %}
+	{% endblock %}
+
+</main>
+
+
+ <!---------------------------< footer >----------------------------------------------------->
+	<footer>
+		<div class = "inner">
+			<div class = "footer_container">
+				<div class = "footertop">
+					<div class = "logo">
+						<img src = "static/images/logo.png">
+					</div>
+					<ul class ="footerlist">
+						<li><a href = "#">INFO</a></li>
+						<li><a href = "#">MODEL</a></li>
+						<li><a href = "#">FAQ</a></li>
+					</ul>
+				</div>
+				<div class = "copyright">
+					<h6>&copy; 2021.All Rights Reserved.</h6>
+				</div>
+			</div>
+		</div>
+	</footer>
+    </body>
+</html>

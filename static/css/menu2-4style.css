@@ -1,0 +1,604 @@
+
+body {
+	margin: 0;
+	overflow-x: hidden;} /* �̻��� ���ν�ũ���� ���ܼ� hidden���� ���� */
+
+
+header { height: 400px;
+		 background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+			url("https://thevocal.itpage.kr/user/t/thevocal/20200701113519_vgZeEwh1.jpg") repeat-x center;
+} 
+/* "http://res.heraldm.com/content/image/2021/06/10/20210610000469_0.jpg" */
+
+
+
+/* ��� �ȿ� �ؽ�Ʈ �κ�  */
+/* .header .header_tit {text-align: center; 
+					text-transform: uppercase; 
+					margin-top: 55px; font-family: 'Abel', sans-serif;} */
+					
+					
+.header .header_tit h1 {
+    font-size: 55px; 
+	color: #fff; 
+	text-shadow: 5px 7px 2px #000;
+    /* background: #51b0dc;  */
+	display: inline-block; 
+	position: relative;
+    padding: 5px 30px 5px 30px; 
+    /* letter-spacing: 2px;  (�ڰ�)*/
+	font-weight: 1000; /* ��Ʈ���� */ 
+	animation: uptext 2s ease-out;
+}
+
+/*text-shadow ����
+ https://www.codingfactory.net/10650  */
+
+
+/* animation: 
+name
+duration ����ϴµ� �ɸ��� �ð�
+timing-function ����ӵ� (ease ease-in ���)
+delay  ��������
+iteration-count 
+direction �������
+*/
+
+@keyframes uptext {
+	0% {
+		opacity: 0%;
+		top : 50px; 
+	}
+/* 	25% {
+		opacity: 50%;
+		top : 20px; 
+	}
+	75% {
+		opacity: 80%;
+		top : 10px; 
+	} */
+	100% {
+		opacity: 100%; 
+		top : 0px; 
+		
+
+	}
+}
+
+
+
+/************************************* nav bar ***************************************/
+
+
+.nav{
+	width: 100vw;
+	display: flex;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+.nav .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+	/* margin-right: auto; */
+	/* cursor: pointer; */
+}
+
+.nav .logo img {
+	width: 120px;
+	height : 41px;
+}
+	
+.nav .nav_list {
+	/* width: 90%; */
+    display: flex;
+   /*  justify-content: flex-end; */
+   /*  align-items: center; */
+	/* gap: 0.1rem; */ /* gap--> ��һ��� ���� */  /* rem �ֻ��� �θ��� n�� */
+	margin: auto;
+	/* justify-content: center; /* �÷����ڽ����� �ڽĿ�ҵ��� ��� ���� ��Ű�� ���� */ 
+}
+
+
+
+
+
+.nav_listitem {
+	list-style: none;
+	font-weight: bold;
+	position: relative; /* �ڼյ��� ������ġ�κ��� ��������� ���� ��������� �θ� �پ��ֱ� ��  */
+	padding: 1.5rem 3rem;
+	cursor: pointer;
+}
+
+
+
+ 
+/*************** ����ȿ�� ****************/
+.nav_listitem::after {
+	 content: "";
+     width: 0px;
+     height: 0.15rem;
+     border-radius:0.2rem;
+     position: absolute;
+     left: 1rem;
+     bottom: 0.8rem;
+     background-color: #636363;
+     transition: 0.3s ease-in;
+ }
+ 
+.nav_listitem:hover::after{
+	width : 70%;  /* ó���� 0���� �Ⱥ����ٰ� hoverȿ������ 70%�ʺ�� ������ */
+	
+}
+/*************** ����ȿ�� �� ****************/
+
+
+
+
+
+
+.nav_listitem:hover ul {
+	/* .nav_listitem:hover ul ,:focus ul{ */
+	opacity: 1; /* 0~1 ���ڰ� �������� ����  */
+	visibility: visible;
+	
+}
+
+
+/* 2���޴� */
+.nav_listitemdrop {
+	position: absolute;
+	top: 4.3rem;
+	left : -0.2rem;
+	box-shadow: 0 0 10px; 
+	background-color: #fff;
+	/* border-radius: */
+	width: 8rem;
+	display: flex;
+	flex-direction: column;
+	/* gap: 0.7rem; */	
+	/* padding: 1rem; */
+	opacity: 0;
+	visibility: hidden; 
+	transition : opacity 100ms ease-in;
+	padding-left: 0;
+	text-align: center;
+	font-size: small;
+
+}
+
+.nav_listitemdrop li {
+	display:inline-block;
+	list-style: none;
+	width: 100%;
+	height:2em;
+	padding-top: 10px;
+	transition: 0.1s ease-in;
+	/* padding: 0.5rem 1rem; */
+}
+
+.nav_listitemdrop li:hover {
+	background-color: #d2d2d2;
+}
+/* 2���޴� �� */
+
+
+
+.nav_hamberger {
+	display: none;
+	position: absolute;
+	left: 90%;
+	list-style: none;
+	cursor: pointer;
+	margin: 0 20px;
+	padding: 1.5rem 0;
+	font-size: 25px;
+}
+
+
+
+/* --------------------------------- flex ���� ------------------------------------------ */
+
+/* flex ���� */
+/*  �θ� display : flex �̸� �ڽĵ��� flex ������ �Ӽ��� ���´� 
+	flex  : flex-grow(�����ʺ�) , flex-shrink(���ҳʺ�), flex-basis(������� �� �⺻ �ʺ�)
+*/
+
+
+
+/* --------------------------------- main ------------------------------------------ */
+
+/* ��ũ�� ������ ȿ�� ����
+https://dkanxmstmdgml.tistory.com/111 */
+
+
+
+/* ���Ǻ� ���� */
+.inner {
+	width: 1300px; /* �ʹ� ������ ǥ���ϸ� ���� �����ؼ� 1300�ȿ��� ������ ��������  */
+	margin: auto;
+}
+
+
+
+/* top section  */
+.top {
+	display: flex;
+	padding: 50px 0;
+}
+.top-content{
+	text-align: center;
+	
+}
+
+.top-content h1 {
+	font-size: 55px;
+	color : 1c1c1c;
+	position: relative; /* �ִϸ��̼� ȿ�� �ֱ����� */
+	animation: uptext 2s ease-out;
+}
+
+
+
+
+
+
+/* about1 section  */
+.about1 {
+	display: flex;
+	padding: 100px 0;
+}
+
+.about1-content {
+	 /* border: 3px solid #80ff80;  ���� Ȯ���ϰ� ������ �׵θ� �־ Ȯ���� ���� */
+	display: flex;
+}
+
+.about1-content div {
+	padding: 30px;
+}
+.desc{
+	 /* border : 3px solid #000;  */
+	text-align: center;
+	flex: 3; /* flex �θ𿵿��� 5/2 ũ���� �� */
+}
+.desc h2{
+	font-size: 35px;
+	color : #262525;
+	
+}
+.desc p{
+	color: #333232;
+	font-size : 20px;
+	font-weight: 600;
+	line-height: 1.6em; /* line-height�� ����, ;em �θ����� ���ũ�� */
+	
+}
+.photo {
+	/* border : 3px solid red;  */
+	flex : 2; /* flex �θ𿵿��� 5/3 ũ���� �� */
+	
+}
+.about1-content .photo img {
+	width: 100%; /* width : 50px; �̷������� �ƿ������ϸ� ����Ϲ������� ���ν�ũ�� �߻� */
+	border-radius: 5%;
+	box-shadow: 5px 5px 5px #636363;
+	/* border-radius: 30% 60% 65% 35%  / 40% 45% 55% 60%;   �׵θ�ȿ���� ��ø�Ǿ� �������� ���� ��Ÿ�� �� ����*/ 
+}
+
+
+
+
+/* sesarch section ���� 
+https://www.youtube.com/watch?v=UOGvJhvLUg0 ,
+https://developer.mozilla.org/ko/docs/Learn/Forms/Your_first_form */
+
+
+/*  search section */
+.search {
+	/* border : 1px solid #ff80c0; */
+	display: flex;
+	padding: 80px 0;
+	/* background-color: #d8d8d8; */
+}
+
+.search-content{
+	/* border : 1px solid orange; */
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+}
+
+.search-text {
+	margin-bottom: 15px;
+}
+
+
+.search_box {
+	/* border : 1px solid #ff0000; */ 
+	display: flex;
+	width: 100%;
+	height: auto;
+	/* margin-bottom: 15px; */
+}
+
+form {
+	margin: 0 10%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* �ڽĿ�ҵ� ���� ���  */
+
+}
+
+.upload-preview {
+	width: 70%;
+	height: 400px;
+	/* border : 2px dashed #000;  */
+	border: 5px solid #000;
+	margin : 0 60px 20px 60px;
+
+}
+
+
+.upload-preview img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	
+	
+}
+
+/*
+.inputfilebutton {
+	display: inline-block;
+	width: 150px;
+	/* padding: 6px 25px; 
+	line-height: 45px;
+	background-color: #4a4a4a;
+	border-radius: 35px;
+	color : #fff;
+	cursor: pointer;
+	box-shadow: 3px 3px 3px 2px #000;
+}
+*/
+
+/* input {
+	display: none;
+} */
+
+input{
+margin : 0 0 20px 0;
+width: 180px;
+}
+
+
+input[type="file" i] {
+	padding: 0;
+}
+
+
+
+button {
+	font-size: 15px;
+	width: 200px;
+	height: 60px;
+	border-radius: 15px;
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+	/* box-shadow: 3px 3px 3px 2px #000; */
+/* 	margin: 1rem auto; */
+}
+
+
+button:hover {
+	background-color: #111;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+/*********************************************** footer ************************************************/
+
+footer {
+	/* display: flex; */
+	/* height: 100%; */
+	margin-top: 10em;
+	background-color: #1b1b1b; 
+}
+
+
+.footer_container { 
+    height: 15em;
+    display: flex;
+    flex-direction: column;
+    /* border-top: 5px solid #b0b0b0;  */
+	/* margin-top: auto; */
+}
+
+
+.footertop {
+	display: flex;
+	height: 10em;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.footertop .logo {
+	list-style: none;
+	padding: 1rem 1rem;
+}
+
+
+.footertop .logo img {
+	width: 120px;
+	height : 41px;
+}
+
+
+.footertop .footerlist {
+	display: flex;
+	list-style: none;/*  li�±���  �⺻�� . ��� */  
+	font-size: 12px;
+}
+
+.footerlist li {
+	padding: 8px 10px;
+}
+
+.footerlist li a{
+	text-decoration: none; /* a�±��� �⺻ ���� */
+	margin : 0 20px;
+	color: #fff;
+}
+
+
+
+.footerlist li a:hover{
+	text-decoration: underline;
+}
+
+
+
+/* ������ ������(after)�� �̿��ؼ� ���м� �ֱ�  */
+.footerlist li::after {
+	content : "|";
+	color: #fff;
+}
+.footerlist li:last-child::after {
+	content: "";
+}
+
+
+
+
+.copyright { 
+	border-top: 1px solid  #fff;
+	/* text-align: right; */
+	margin: 2% 0; 
+}
+
+
+.copyright h6 { 
+	color: #fff;
+	font-size: 13px;
+}
+
+
+
+/* media query*/
+/* @media (max-width: 1220px){
+    .container {width: 100%;}
+    .row {padding: 0 15px;}
+}  */
+
+/**************************** ������ �κ� *****************************************************/
+
+ @media all and (min-width:1024px) {
+ }
+
+/* PC , �׺� ���� (�ػ� 768px ~ 1023px)*/
+ @media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+/* �׺� ���� (�ػ� 768px ~ 1023px)  */
+@media all and (min-width:768px) and (max-width:1023px) {
+	
+ } 
+	
+/* ����� ����, �׺� ���� (�ػ� 480px ~ 767px)  */
+@media all and (min-width:480px) and (max-width:767px) {
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* ��ũ��Ʈ ���� �κ�  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}	
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* ��ũ��Ʈ ���� �κ�  */
+	display: flex;
+} 
+
+}
+
+
+
+@media all and (max-width:479px) {	
+.nav_hamberger {
+	display: block;
+}
+
+.nav_hamberger .fa-times {
+	display:none;
+}
+
+.fa-bars.active { /* ��ũ��Ʈ ���� �κ�  */
+	display:none;
+}
+
+.fa-times.active {
+	display:block;
+}
+
+
+
+.nav {
+flex-direction: column;
+}	
+.nav > .nav_list {
+flex-direction: column;
+display: none;
+}
+
+.nav_listitemdrop {
+	display: none;
+}
+
+.nav_list.active {  /* ��ũ��Ʈ ���� �κ�  */
+	display: flex;
+} 
+
+}
+
+
+
+
+
